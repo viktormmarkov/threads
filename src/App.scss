@@ -1,0 +1,12 @@
+$bgcolor: #f1f1f1;
+$font-color: #999999;
+$card-background: #fff;
+
+html, body, #root {
+  background-color: $bgcolor;
+  color: $font-color
+}
+
+.card {
+  background-color: $card-background;
+}

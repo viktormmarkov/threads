@@ -12,7 +12,7 @@ const message = {
   "id":"5cc01207a59a5a02bc68e007"
 };
 function Card({message}) {
-  return (<div>
+  return (<div className='card'>
     <div>
       {message.subject}
     </div>
