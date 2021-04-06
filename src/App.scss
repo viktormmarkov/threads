@@ -2,6 +2,48 @@ $bgcolor: #f1f1f1;
 $font-color: #999999;
 $card-background: #fff;
 
+$sizes: 5, 10, 15, 20;
+$sides: (top, bottom, left, right);
+$axises: ("horizontal": "x", "vertical": "y");
+
+@each $size in $sizes {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$size} {
+      margin-#{$side}: #{$size}px !important;
+    }
+  
+    .p-#{str-slice($side, 0, 1)}-#{$size} {
+      padding-#{$side}: #{$size}px !important;
+    }
+  }
+  .m-#{$size} {
+    margin: #{$size}px !important;
+  }
+  .p-#{$size} {
+    padding: #{$size}px !important;
+  }
+}
+
+@each $name, $prefix in $axises {
+  @each $size in $sizes {
+      @if $prefix == x {
+        .m-#{$prefix}-#{$size} {
+          margin: 0 #{$size}px
+        }
+        .p-#{$prefix}-#{$size} {
+          padding: 0 #{$size}px
+        }
+      } @else {
+        .m-#{$prefix}-#{$size} {
+          margin: #{$size}px 0
+        }
+        .p-#{$prefix}-#{$size} {
+          padding: #{$size}px 0
+        }
+      }
+    }
+}
+
 html, body, #root {
   background-color: $bgcolor;
   color: $font-color
@@ -10,3 +52,4 @@ html, body, #root {
 .card {
   background-color: $card-background;
 }
+
