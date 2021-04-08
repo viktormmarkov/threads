@@ -6,7 +6,6 @@ import { CardContainer } from './Cards';
 // proper spacing padding
 // responsive design
 // split code - css and js
-// date formatting
 
 function App() {
   const [threads, setThreads] = useState([]);

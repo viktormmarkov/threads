@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getHighRatingClass } from "./designUtils";
+import { formatDate } from './dateUtils';
 
 function Card({ message, className = "" }) {
   return (
@@ -12,7 +13,7 @@ function Card({ message, className = "" }) {
       </div>
       <div className="card-body m-y-5">
         <span>{message.question}</span>
-        <span>{message.created_at}</span>
+        <span>{formatDate(message.created_at)}</span>
       </div>
       <div className="card-content m-y-5">{message.text}</div>
     </div>
