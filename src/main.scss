@@ -1,10 +1,11 @@
-@import './variables.scss';
-@import './mixins.scss';
+@import "./variables.scss";
+@import "./mixins.scss";
 $first-column-size: 0.7;
 
-html, body, #root {
+html,
+body {
   background-color: $bgcolor;
-  color: $font-color
+  color: $font-color;
 }
 
 .container {
@@ -22,7 +23,7 @@ html, body, #root {
     top: -0.5rem;
     width: 200px;
     text-align: center;
-    color: white; 
+    color: white;
     border-radius: $borderRadius;
 
     &.high-rating {
@@ -44,12 +45,15 @@ html, body, #root {
 
   &.shadow {
     display: none;
-    .card-title, .card-body, .card-content {
+    .card-title,
+    .card-body,
+    .card-content {
       visibility: hidden;
     }
   }
 
-  .card-title, .card-body {
+  .card-title,
+  .card-body {
     justify-content: space-between;
     @include row();
     .first-column {
@@ -67,7 +71,7 @@ html, body, #root {
   .card-title {
     .high-rating {
       font-weight: bolder;
-      color: $highrating
+      color: $highrating;
     }
     .low-rating {
       color: $lowrating;
