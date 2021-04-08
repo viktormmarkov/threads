@@ -5,8 +5,9 @@ $highrating: #9335ff;
 $lowrating: #e89d40;
 $highratingMessageCounter: #27aae1;
 $lowratingMessageCounter: $lowrating;
-
-$sizes: 5, 10, 15, 20;
+$borderRadius: 10px;
+$sizes: 5, 10, 15, 20, 30, 40;
+$shadowCount: 1,2,3;
 
 $sides: (top, bottom, left, right);
 $axises: ("horizontal": "x", "vertical": "y");
@@ -14,6 +15,14 @@ $axises: ("horizontal": "x", "vertical": "y");
 @mixin column {
   display: flex;
   flex-direction: column;
+}
+
+@mixin shadow {
+  position: absolute !important;
+  width: 100%;
+  height: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 @mixin row {
@@ -59,18 +68,55 @@ $axises: ("horizontal": "x", "vertical": "y");
     }
 }
 
+@each $shadow in $shadowCount {
+  .card.shadow-#{$shadow} {
+    @include shadow();
+    display: block;
+    z-index: #{$shadow};
+    top: $shadow * 15px;
+    left: $shadow * 15px;
+
+    .card-title, .card-body, .card-content {
+      visibility: hidden;
+    }
+  }
+}
+
+.card-container {
+  position: relative;
+  .message-counter {
+    position: absolute;
+  }
+}
+
 html, body, #root {
   background-color: $bgcolor;
   color: $font-color
 }
 
 .card {
+  position: relative;
+  border-radius: $borderRadius;
   background-color: $card-background;
+  z-index: 5;
+  height: 90px;
+  box-shadow: 0 0px 12px 3px #e1e1e1;
   @include column();
+
+  .shadow {
+    display: none;
+  }
 
   .card-title, .card-body {
     justify-content: space-between;
     @include row();
   }
+  .card-title {
+    .high-rating {
+      color: $highrating
+    }
+    .low-rating {
+      color: $lowrating;
+    }
+  }
 }
-
