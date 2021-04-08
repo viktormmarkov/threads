@@ -20,6 +20,7 @@ const message = {
   "team":"Demo team here.",
   "id":"5cc01207a59a5a02bc68e007"
 };
+
 function Card({message, className = ''}) {
   return (<div className={`card m-y-30 p-15 ${className}`}>
     <div className="card-title">
@@ -52,8 +53,8 @@ function CardContainer({messageGroup}) {
 
 function App() {
   return (
-    <div className="column p-x-30">
-      <CardContainer messageGroup={[message, message, message]}></CardContainer>
+    <div className="column p-x-40">
+      <CardContainer messageGroup={[message, message, message, message]}></CardContainer>
       <Card message={message}></Card>
       <Card message={message}></Card>
       <Card message={message}></Card>

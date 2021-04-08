@@ -7,7 +7,7 @@ $highratingMessageCounter: #27aae1;
 $lowratingMessageCounter: $lowrating;
 $borderRadius: 10px;
 $sizes: 5, 10, 15, 20, 30, 40;
-$shadowCount: 1,2,3;
+$shadowCount: 2;
 
 $sides: (top, bottom, left, right);
 $axises: ("horizontal": "x", "vertical": "y");
@@ -68,11 +68,11 @@ $axises: ("horizontal": "x", "vertical": "y");
     }
 }
 
-@each $shadow in $shadowCount {
+@for $shadow from 1 through $shadowCount{
   .card.shadow-#{$shadow} {
     @include shadow();
     display: block;
-    z-index: #{$shadow};
+    z-index: #{$shadowCount - $shadow};
     top: $shadow * 15px;
     left: $shadow * 15px;
 
@@ -103,7 +103,7 @@ html, body, #root {
   box-shadow: 0 0px 12px 3px #e1e1e1;
   @include column();
 
-  .shadow {
+  &.shadow {
     display: none;
   }
 
