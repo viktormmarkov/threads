@@ -1,5 +1,11 @@
 @import './variables.scss';
 @import './mixins.scss';
+$first-column-size: 0.7;
+
+html, body, #root {
+  background-color: $bgcolor;
+  color: $font-color
+}
 
 .container {
   margin: 0 auto;
@@ -28,11 +34,6 @@
   }
 }
 
-html, body, #root {
-  background-color: $bgcolor;
-  color: $font-color
-}
-
 .card {
   position: relative;
   border-radius: $borderRadius;
@@ -51,6 +52,13 @@ html, body, #root {
   .card-title, .card-body {
     justify-content: space-between;
     @include row();
+    .first-column {
+      flex: $first-column-size;
+    }
+    .second-column {
+      flex: 1 - $first-column-size;
+      text-align: right;
+    }
   }
 
   .card-body {

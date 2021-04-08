@@ -3,11 +3,43 @@ $shadowCount: 2;
 $shadowOffset: 10;
 
 $sides: (top, bottom, left, right);
-$axises: ("horizontal": "x", "vertical": "y");
+$axises: (
+  "horizontal": "x",
+  "vertical": "y",
+);
+
+@mixin flexbox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-direction($direction) {
+  @if $direction == column {
+    -webkit-flex-direction: vertical;
+    -moz-flex-direction: vertical;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  } @else {
+    -webkit-flex-direction: horizontal;
+    -moz-flex-direction: horizontal;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+}
 
 @mixin column {
-  display: flex;
-  flex-direction: column;
+  @include flexbox();
+  @include flex-direction(column)
+}
+
+@mixin row {
+  @include flexbox();
+  @include flex-direction(row)
 }
 
 @mixin shadow {
@@ -18,17 +50,12 @@ $axises: ("horizontal": "x", "vertical": "y");
   margin: 0 !important;
 }
 
-@mixin row {
-  display: flex;
-  flex-direction: row;
-}
-
 @each $size in $sizes {
   @each $side in $sides {
     .m-#{str-slice($side, 0, 1)}-#{$size} {
       margin-#{$side}: #{$size}px !important;
     }
-  
+
     .p-#{str-slice($side, 0, 1)}-#{$size} {
       padding-#{$side}: #{$size}px !important;
     }
@@ -43,30 +70,30 @@ $axises: ("horizontal": "x", "vertical": "y");
 
 @each $name, $prefix in $axises {
   @each $size in $sizes {
-      @if $prefix == x {
-        .m-#{$prefix}-#{$size} {
-          margin: 0 #{$size}px
-        }
-        .p-#{$prefix}-#{$size} {
-          padding: 0 #{$size}px
-        }
-      } @else {
-        .m-#{$prefix}-#{$size} {
-          margin: #{$size}px 0
-        }
-        .p-#{$prefix}-#{$size} {
-          padding: #{$size}px 0
-        }
+    @if $prefix == x {
+      .m-#{$prefix}-#{$size} {
+        margin: 0 #{$size}px;
+      }
+      .p-#{$prefix}-#{$size} {
+        padding: 0 #{$size}px;
+      }
+    } @else {
+      .m-#{$prefix}-#{$size} {
+        margin: #{$size}px 0;
+      }
+      .p-#{$prefix}-#{$size} {
+        padding: #{$size}px 0;
       }
     }
+  }
 }
 
-@for $shadow from 1 through $shadowCount{
+@for $shadow from 1 through $shadowCount {
   .card.shadow-#{$shadow} {
     @include shadow();
     display: block !important;
     z-index: #{$shadowCount - $shadow};
-    top: #{$shadow *$shadowOffset}px;
-    left: #{$shadow *$shadowOffset}px;
+    top: #{$shadow * $shadowOffset}px;
+    left: #{$shadow * $shadowOffset}px;
   }
 }
