@@ -113,7 +113,6 @@ html, body, #root {
   border-radius: $borderRadius;
   background-color: $card-background;
   z-index: 5;
-  height: 90px;
   box-shadow: 0 0px 12px 3px #e1e1e1;
   @include column();
 
@@ -125,12 +124,18 @@ html, body, #root {
     justify-content: space-between;
     @include row();
   }
+
+  .card-body {
+    font-weight: 300;
+  }
   .card-title {
     .high-rating {
+      font-weight: bolder;
       color: $highrating
     }
     .low-rating {
       color: $lowrating;
+      font-weight: bolder;
     }
   }
 }
