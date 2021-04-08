@@ -40,7 +40,7 @@ function CardContainer({messageGroup}) {
     {messageCount > 1 ? <div className={`message-counter ${getHighRatingClass(firstMessage?.score)}`} onClick={toggleContainer}>{messageCount} messages</div>: null}
     {messageGroup.map((m,i) => {
       const classes = i === 0 ? 'main' : !expanded ? `shadow shadow-${i}` : 'main';
-      return <Card message={m} className={classes} key={`${message.id}#${i}`}></Card>
+      return <Card message={m} className={classes} key={`${m.id}`}></Card>
     })}
   </div>)
 }
