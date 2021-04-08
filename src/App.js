@@ -1,4 +1,4 @@
-import './App.scss';
+import './main.scss';
 import { useState, useEffect } from 'react';
 import { CardContainer } from './Cards';
 

@@ -1,11 +1,3 @@
-$bgcolor: #f1f1f1;
-$font-color: #999999;
-$card-background: #fff;
-$highrating: #9335ff;
-$lowrating: #e89d40;
-$highratingMessageCounter: #27aae1;
-$lowratingMessageCounter: $lowrating;
-$borderRadius: 10px;
 $sizes: 5, 10, 15, 20, 30, 40, 50;
 $shadowCount: 2;
 $shadowOffset: 10;
@@ -76,72 +68,5 @@ $axises: ("horizontal": "x", "vertical": "y");
     z-index: #{$shadowCount - $shadow};
     top: #{$shadow *$shadowOffset}px;
     left: #{$shadow *$shadowOffset}px;
-  }
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 768px;
-  min-width: 320px;
-}
-
-.card-container {
-  position: relative;
-  .message-counter {
-    position: absolute;
-    z-index: 6;
-    right: 20px;
-    top: -0.5rem;
-    width: 200px;
-    text-align: center;
-    color: white; 
-    border-radius: $borderRadius;
-
-    &.high-rating {
-      background-color: $highratingMessageCounter;
-    }
-    &.low-rating {
-      background-color: $lowrating;
-    }
-  }
-}
-
-html, body, #root {
-  background-color: $bgcolor;
-  color: $font-color
-}
-
-.card {
-  position: relative;
-  border-radius: $borderRadius;
-  background-color: $card-background;
-  z-index: 5;
-  box-shadow: 0 0px 12px 3px #e1e1e1;
-  @include column();
-
-  &.shadow {
-    display: none;
-    .card-title, .card-body, .card-content {
-      visibility: hidden;
-    }
-  }
-
-  .card-title, .card-body {
-    justify-content: space-between;
-    @include row();
-  }
-
-  .card-body {
-    font-weight: 300;
-  }
-  .card-title {
-    .high-rating {
-      font-weight: bolder;
-      color: $highrating
-    }
-    .low-rating {
-      color: $lowrating;
-      font-weight: bolder;
-    }
   }
 }
