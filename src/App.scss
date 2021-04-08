@@ -71,10 +71,10 @@ $axises: ("horizontal": "x", "vertical": "y");
 @for $shadow from 1 through $shadowCount{
   .card.shadow-#{$shadow} {
     @include shadow();
-    display: block;
+    display: block !important;
     z-index: #{$shadowCount - $shadow};
-    top: $shadow * 15px;
-    left: $shadow * 15px;
+    top: $shadow * 12px;
+    left: $shadow * 12px;
 
     .card-title, .card-body, .card-content {
       visibility: hidden;
@@ -86,6 +86,20 @@ $axises: ("horizontal": "x", "vertical": "y");
   position: relative;
   .message-counter {
     position: absolute;
+    z-index: 6;
+    right: 20px;
+    top: -0.5rem;
+    width: 200px;
+    text-align: center;
+    color: white; 
+    border-radius: $borderRadius;
+
+    &.high-rating {
+      background-color: $highratingMessageCounter;
+    }
+    &.low-rating {
+      background-color: $lowrating;
+    }
   }
 }
 
