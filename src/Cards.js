@@ -3,7 +3,7 @@ import { getHighRatingClass } from "./designUtils";
 
 function Card({ message, className = "" }) {
   return (
-    <div className={`card m-y-30 p-30 ${className}`}>
+    <div className={`card m-y-40 p-30 ${className}`}>
       <div className="card-title m-y-5">
         <span className={getHighRatingClass(message?.score)}>
           {message.subject}
@@ -11,7 +11,7 @@ function Card({ message, className = "" }) {
         <span>{message.team}</span>
       </div>
       <div className="card-body m-y-5">
-        <span >{message.question}</span>
+        <span>{message.question}</span>
         <span>{message.created_at}</span>
       </div>
       <div className="card-content m-y-5">{message.text}</div>
@@ -28,7 +28,7 @@ export function CardContainer({ messageGroup }) {
   };
   const displayMessageCounter = messageCount > 1 && !expanded;
   return (
-    <div className={`card-container`}  onClick={toggleContainer}>
+    <div className={`card-container`} onClick={toggleContainer}>
       {displayMessageCounter ? (
         <div
           className={`message-counter ${getHighRatingClass(

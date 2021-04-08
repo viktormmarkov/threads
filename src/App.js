@@ -19,7 +19,7 @@ function App() {
   }, []);
 
   return (
-    <div className="column p-x-40">
+    <div className="column p-x-40 container">
       {
         threads.map((thread) => (<CardContainer 
           messageGroup={thread}

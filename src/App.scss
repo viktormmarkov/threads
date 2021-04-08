@@ -6,8 +6,9 @@ $lowrating: #e89d40;
 $highratingMessageCounter: #27aae1;
 $lowratingMessageCounter: $lowrating;
 $borderRadius: 10px;
-$sizes: 5, 10, 15, 20, 30, 40;
+$sizes: 5, 10, 15, 20, 30, 40, 50;
 $shadowCount: 2;
+$shadowOffset: 10;
 
 $sides: (top, bottom, left, right);
 $axises: ("horizontal": "x", "vertical": "y");
@@ -73,13 +74,15 @@ $axises: ("horizontal": "x", "vertical": "y");
     @include shadow();
     display: block !important;
     z-index: #{$shadowCount - $shadow};
-    top: $shadow * 12px;
-    left: $shadow * 12px;
-
-    .card-title, .card-body, .card-content {
-      visibility: hidden;
-    }
+    top: #{$shadow *$shadowOffset}px;
+    left: #{$shadow *$shadowOffset}px;
   }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 768px;
+  min-width: 320px;
 }
 
 .card-container {
@@ -118,6 +121,9 @@ html, body, #root {
 
   &.shadow {
     display: none;
+    .card-title, .card-body, .card-content {
+      visibility: hidden;
+    }
   }
 
   .card-title, .card-body {
