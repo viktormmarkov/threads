@@ -2,6 +2,25 @@
 @import "./mixins.scss";
 $first-column-size: 0.7;
 
+@media only screen and (max-width: 320px) {
+  .container {
+    width: 320px
+  }
+}
+
+// @media only screen and (min-width: 320px) {
+//   .container {
+//     // width: calc(100% - 80px);
+//   }
+// }
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
 html,
 body {
   background-color: $bgcolor;
@@ -10,8 +29,6 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 768px;
-  min-width: 320px;
 }
 
 .card-container {
@@ -56,24 +73,26 @@ body {
   .card-body {
     justify-content: space-between;
     @include row();
-    .first-column {
-      flex: $first-column-size;
-    }
-    .second-column {
-      flex: 1 - $first-column-size;
-      text-align: right;
-    }
+  }
+  .first-column {
+    @include column();
+    flex: $first-column-size;
+  }
+  .second-column {
+    @include column();
+    flex: 1 - $first-column-size;
+    text-align: right;
   }
 
   .card-body {
     font-weight: 300;
   }
   .card-title {
-    .high-rating {
+  &.high-rating {
       font-weight: bolder;
       color: $highrating;
     }
-    .low-rating {
+  &.low-rating {
       color: $lowrating;
       font-weight: bolder;
     }

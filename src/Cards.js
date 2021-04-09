@@ -5,15 +5,17 @@ import { formatDate } from './dateUtils';
 function Card({ message, className = "" }) {
   return (
     <div className={`card m-y-40 p-30 ${className}`}>
-      <div className="card-title m-y-5">
-        <span className={`${getHighRatingClass(message?.score)} first-column`}>
+      <div className="card-body">
+      <div className="first-column">
+        <span className={`card-title ${getHighRatingClass(message?.score)} `}>
           {message.subject}
         </span>
-        <span className='second-column'>{message.team}</span>
+        <span>{message.question}</span>
       </div>
-      <div className="card-body m-y-5">
-        <span className='first-column'>{message.question}</span>
-        <span className='second-column'>{formatDate(message.created_at)}</span>
+      <div className="second-column">
+        <span>{message.team}</span>
+        <span>{formatDate(message.created_at)}</span>
+      </div>
       </div>
       <div className="card-content m-y-5">{message.text}</div>
     </div>
